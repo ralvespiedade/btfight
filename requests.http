@@ -1,0 +1,31 @@
+# Criar um novo jogador
+POST http://localhost:3000/api/players
+Content-Type: application/json
+
+{
+    "name": "Ana Costa",
+    "age": 28,
+    "email": "ana.costa@example.com",
+    "ranking": 1200
+}
+
+###
+
+# Listar todos os jogadores
+GET http://localhost:3000/api/players
+
+###
+
+# Atualizar um jogador
+PUT http://localhost:3000/api/players/ID_DO_JOGADOR
+Content-Type: application/json
+
+{
+    "name": "Ana Costa Atualizada",
+    "age": 29
+}
+
+###
+
+# Deletar um jogador
+DELETE http://localhost:3000/api/players/ID_DO_JOGADOR

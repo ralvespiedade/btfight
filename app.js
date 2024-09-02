@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const playerRoutes = require('./routes/playerRoutes');
+
 const app = express();
 const port = 3000;
 
 // Meddleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/api', playerRoutes);
 
 //Conexão com MongoDb
 mongoose.connect('mongodb://localhost:27017/btfight', {

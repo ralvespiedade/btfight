@@ -24,3 +24,31 @@ router.get('/players', async(req, res) => {
     res.status(500).send(error);
   }
 });
+
+// Rota para atualizar um jogador
+router.put('/players/:id', async (req, res) => {
+  try {
+      const player = await Player.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+      if (!player) {
+          return res.status(404).send();
+      }
+      res.send(player);
+  } catch (error) {
+      res.status(400).send(error);
+  }
+});
+
+// Rota para deletar um jogador
+router.delete('/players/:id', async (req, res) => {
+  try {
+      const player = await Player.findByIdAndDelete(req.params.id);
+      if (!player) {
+          return res.status(404).send();
+      }
+      res.send(player);
+  } catch (error) {
+      res.status(500).send(error);
+  }
+});
+
+module.exports = router;

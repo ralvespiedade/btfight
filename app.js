@@ -1,7 +1,9 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
 
 const playerRoutes = require('./routes/playerRoutes');
 
@@ -14,7 +16,7 @@ app.use(cors());
 app.use('/api', playerRoutes);
 
 //Conexão com MongoDb
-mongoose.connect('mongodb://localhost:27017/btfight', {
+mongoose.connect(process.env.MONGO_TOKEN, {
   
 }).then(() => {
   console.log('Conectado ao MongoDB');
